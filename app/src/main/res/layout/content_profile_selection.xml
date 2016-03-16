@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.nagareddy.tabbedactivity.logic.ProfileSelection"
+    tools:showIn="@layout/activity_profile_selection">
+
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1"
+            >
+
+            <RadioButton
+                android:id="@+id/ring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ring"
+                android:textSize="25sp"
+                android:textColor="@color/radioText"
+                android:textStyle="normal"
+                android:enabled="true"
+                />
+
+
+            <RadioButton
+                android:id="@+id/vibrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Vibrate"
+                android:textSize="25sp"
+                android:textColor="@color/radioText"
+                android:textStyle="normal"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/silent"
+                android:layout_marginTop="30dp"
+                android:text="Silent"
+                android:textSize="25sp"
+                android:textColor="@color/radioText"
+                android:textStyle="normal"/>
+
+
+        </RadioGroup>
+
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_below="@id/radiogroup"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="120dp"
+           android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/volume"
+            android:layout_below="@id/radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volume"
+            android:textStyle="bold"
+            android:textColor="@color/radioText"
+            android:textSize="25dp"
+            android:layout_marginTop="45dp"
+
+            />
+
+
+        <Button
+            android:id="@+id/savebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/colorAccent"
+            android:text="SAVE"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/seekbar"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/radioText"
+          />
+
+
+        <TextView
+            android:id="@+id/toastmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_below="@+id/savebutton"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+
+
+
+</RelativeLayout>
