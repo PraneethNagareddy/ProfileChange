@@ -1,6 +1,5 @@
 package com.nagareddy.tabbedactivity.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nagareddy.tabbedactivity.R;
 
@@ -56,7 +54,7 @@ public class ScanListAdapter extends BaseAdapter   {
             convertView = mInflater.inflate(R.layout.scan_list, null);
             holder = new ViewHolder();
             holder.txtname = (TextView) convertView.findViewById(R.id.lv_contact_item_name);
-            holder.txtphone = (TextView) convertView.findViewById(R.id.lv_contact_item_phone);
+           // holder.txtphone = (TextView) convertView.findViewById(R.id.lv_contact_item_phone);
             holder.imageView = (ImageView) convertView.findViewById(R.id.image);
             convertView.setTag(holder);
         }
@@ -65,7 +63,7 @@ public class ScanListAdapter extends BaseAdapter   {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.txtname.setText(texts.get(position));
-        holder.txtphone.setText("ABCD");
+//        holder.txtphone.setText("ABCD");
         holder.imageView.setImageResource(images.get(position));
 
         return convertView;
