@@ -8,11 +8,6 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
-    <item android:id="@+id/scan"
-         android:title="HOME"
-         app:showAsAction="never"
-         />
-
     <item android:id="@+id/questions"
         android:title="question"
         android:icon="@drawable/icon2"

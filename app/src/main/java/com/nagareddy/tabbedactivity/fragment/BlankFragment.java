@@ -1,12 +1,15 @@
 package com.nagareddy.tabbedactivity.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -35,16 +38,15 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
 
     public BlankFragment() {
         // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         dao = new PreferencesDAO(getActivity().getApplicationContext());
-        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
         updateList();
+        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
         ListView lv = (ListView) rootView.findViewById(R.id.lv_contact);
         adapter = new ScanListAdapter(getActivity(), scanSSIDs, savedModes);
         lv.setAdapter(adapter);
@@ -55,6 +57,7 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
                 //Toast.makeText(getActivity(), "Clicked"+arg0.getItem(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), ProfileSelection.class); // alwys use getActivity() as first parameter in fragment. Generally. "this" is used while calling an activity from an other activity. For fragments use getActivity
                 intent.putExtra("ssid", scanSSIDs.get(+position));
+                intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -68,6 +71,12 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
             Tabs parentActivity = (Tabs)getActivity();
             parentActivity.setMenuLayout(0);
             parentActivity.invalidateOptionsMenu();
+            savedModes.clear();
+            for (String ssid:scanSSIDs) {
+                //scanSSIDs.add(ssid);
+                savedModes.add(getImageId(dao.getPreferenceof(ssid)));
+            }
+            adapter.notifyDataSetChanged();
         }
     }
 
@@ -91,6 +100,8 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     }
 
     public void updateList(){
+        //getActivity().requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        //getActivity().setProgressBarIndeterminateVisibility(true);
         Tabs parentActivity = (Tabs)getActivity();
         parentActivity.setMenuLayout(2);
         parentActivity.invalidateOptionsMenu();
@@ -103,6 +114,7 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     public void onScanListComplete(ArrayList<String> ssids) {
         Tabs parentActivity = (Tabs)getActivity();
         parentActivity.stopAnimation();
+        //getActivity().setProgressBarIndeterminateVisibility(false);
         scanSSIDs.clear();
         savedModes.clear();
         for (String ssid:ssids) {

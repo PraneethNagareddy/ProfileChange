@@ -166,19 +166,26 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
     public boolean onPrepareOptionsMenu (Menu menu) {
 
         if (menuLayout == 0) {
-            menu.clear();
-            getMenuInflater().inflate(R.menu.menu_scan_tab, menu);
-            myMenu = menu;
+            //menu.removeItem(R.id.scan);
+            //menu.close();
+            if(menu.findItem(R.id.scan)!=null) menu.findItem(R.id.scan).setActionView(null);
+            stopAnimation();
+            myMenu.clear();
+            getMenuInflater().inflate(R.menu.menu_scan_tab, myMenu);
+            stopAnimation();
+           // myMenu = menu;
         }
         else if (menuLayout == 1) {
-            menu.clear();
-            getMenuInflater().inflate(R.menu.menu_saved_tab, menu);
-            myMenu = menu;
+
+            myMenu.clear();
+            getMenuInflater().inflate(R.menu.menu_saved_tab, myMenu);
+
+            //myMenu = menu;
         }
         else if (menuLayout == 2){
             menu.clear();
-            getMenuInflater().inflate(R.menu.menu_scan_tab, menu);
-            myMenu = menu;
+            getMenuInflater().inflate(R.menu.menu_scan_tab, myMenu);
+            //myMenu = menu;
             LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             ImageView iv = (ImageView)inflater.inflate(R.layout.scan_refresh, null);
             Animation rotation = AnimationUtils.loadAnimation(this, R.anim.refresh_rotate);
@@ -188,19 +195,20 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
         }
         else {}
 
-        return super.onPrepareOptionsMenu(menu);
+        return super.onPrepareOptionsMenu(myMenu);
     }
 
     public void stopAnimation()
     {
         // Get our refresh item from the menu
         MenuItem m = myMenu.findItem(R.id.scan);
-        if(m.getActionView()!=null)
+
+        if(m!=null && m.getActionView()!=null)
         {
-            // Remove the animation.
             m.getActionView().clearAnimation();
             m.setActionView(null);
         }
+        //myMenu.clear();
     }
 
 }

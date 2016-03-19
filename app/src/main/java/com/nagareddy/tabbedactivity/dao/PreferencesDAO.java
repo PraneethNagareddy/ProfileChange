@@ -40,13 +40,13 @@ public class PreferencesDAO extends SQLiteOpenHelper{
                 "create table preferences " +
                         "(id integer primary key, ssid text,mode number)"
         );
-        db.execSQL("INSERT INTO preferences VALUES (1,'Default',"+maxVol+")");
+        db.execSQL("INSERT INTO preferences VALUES (1,'Default'," + maxVol + ")");
     }
 
     public int getPreferenceof(String ssid){
         int returnValue=-1;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery("select mode from preferences WHERE ssid = '"+ssid+"'", null);
+        Cursor res =  db.rawQuery("select mode from preferences WHERE ssid = '" + ssid + "'", null);
         res.moveToFirst();
         if(res.getCount()>0)
             returnValue = res.getInt(res.getColumnIndex("mode"));
@@ -90,6 +90,12 @@ public class PreferencesDAO extends SQLiteOpenHelper{
         } else
             db.insert("preferences", null, contentValues);
         return true;
+    }
+
+
+    public int deletePreference(String ssid){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("preferences", "ssid = '"+ssid+"'",null);
     }
 
 }

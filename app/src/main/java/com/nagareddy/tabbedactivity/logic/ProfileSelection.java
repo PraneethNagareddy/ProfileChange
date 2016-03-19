@@ -137,6 +137,7 @@ public class ProfileSelection extends AppCompatActivity implements SeekBar.OnSee
         int id = item.getItemId();
         if (id == R.id.home) {
             Intent productIntent = new Intent(this, Tabs.class);
+            productIntent.setFlags( productIntent.getFlags() | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(productIntent);
             return true;
         }

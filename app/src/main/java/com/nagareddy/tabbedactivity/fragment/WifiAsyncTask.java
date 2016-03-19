@@ -38,6 +38,11 @@ class WifiAsyncTask extends AsyncTask<Void,Void,Void> {
     }
 
     @Override
+    protected void onPreExecute() {
+
+    }
+
+    @Override
     protected void onPostExecute(Void result) {
         updater.onScanListComplete(ssids);
     }

@@ -10,14 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nagareddy.tabbedactivity.R;
+import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
 
 import java.util.ArrayList;
 
 /**
  * Created by keerthichandra on 3/3/2016.
  */
-public class CustomAdapter extends BaseAdapter   {
-
+public class CustomAdapter1 extends BaseAdapter   {
 
     //private static ArrayList<ListviewContactItem> listContact;
     private final ArrayList<String> texts;
@@ -25,7 +25,7 @@ public class CustomAdapter extends BaseAdapter   {
 
     private LayoutInflater mInflater;
 
-  public CustomAdapter(Context photosFragment, ArrayList<String> texts, ArrayList<Integer> images) {
+  public CustomAdapter1(Context photosFragment, ArrayList<String> texts, ArrayList<Integer> images) {
         mInflater = LayoutInflater.from(photosFragment);
         this.texts = texts;
         this.images = images;
@@ -67,16 +67,19 @@ public class CustomAdapter extends BaseAdapter   {
           holder = (ViewHolder) convertView.getTag();
        }
         holder.txtname.setText(texts.get(position));
-      //  holder.txtphone.setText("ABCD");
         holder.imageView.setImageResource(images.get(position));
-        if (!holder.txtname.getText().equals("Default")) {
+         if (holder.txtname.getText().equals("Default"))
+             holder.deleteView.setImageResource(R.drawable.dummy);
+         else {
             holder.deleteView.setImageResource(R.drawable.delete);
 
             holder.deleteView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "you Clicked " + position, Toast.LENGTH_SHORT).show();
+                    PreferencesDAO dao = new PreferencesDAO(v.getContext());
+                    if(dao.deletePreference(texts.get(position)) > 0)
+                        Toast.makeText(v.getContext(), "Your Preference for " + texts.get(position) + " is deleted", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -87,10 +90,7 @@ public class CustomAdapter extends BaseAdapter   {
 
     static class ViewHolder {
         TextView txtname, txtphone;
-
         ImageView imageView;
-
-
         public ImageView deleteView;
 
     }
