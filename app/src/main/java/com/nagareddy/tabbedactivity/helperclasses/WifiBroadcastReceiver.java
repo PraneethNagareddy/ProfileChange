@@ -26,7 +26,7 @@ public class WifiBroadcastReceiver extends BroadcastReceiver {
                 && ((!netInfo.isConnected())
                 || netInfo.getType() == (ConnectivityManager.TYPE_MOBILE))){
 
-            applyPreference("default");
+            applyPreference("Default");
         }
 
         WifiManager wifiMan = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
