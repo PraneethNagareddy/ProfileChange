@@ -1,15 +1,12 @@
 package com.nagareddy.tabbedactivity.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -44,10 +41,15 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+
         dao = new PreferencesDAO(getActivity().getApplicationContext());
         updateList();
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
         ListView lv = (ListView) rootView.findViewById(R.id.lv_contact);
+
+
         adapter = new ScanListAdapter(getActivity(), scanSSIDs, savedModes);
         lv.setAdapter(adapter);
 
@@ -111,7 +113,7 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     }
 
 
-    public void onScanListComplete(ArrayList<String> ssids) {
+     public void onScanListComplete(ArrayList<String> ssids) {
         Tabs parentActivity = (Tabs)getActivity();
         parentActivity.stopAnimation();
         //getActivity().setProgressBarIndeterminateVisibility(false);
@@ -123,6 +125,9 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
         }
         adapter.notifyDataSetChanged();
     }
+
+
+
 
 }
 

@@ -1,5 +1,6 @@
 package com.nagareddy.tabbedactivity.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -20,10 +21,14 @@ class WifiAsyncTask extends AsyncTask<Void,Void,Void> {
     UIDataUpdater updater;
     ArrayList<String> ssids = new ArrayList<String>();
 
+
     public void registerUI(Context context, UIDataUpdater updater) {
         this.parentContext = context;
         this.updater = updater;
     }
+
+
+    ProgressDialog dialog;
 
     @Override
     protected Void doInBackground(Void ... params) {
@@ -40,10 +45,14 @@ class WifiAsyncTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
 
+dialog = ProgressDialog.show(parentContext, "Loading...", "Please wait...", true);
+
     }
+
 
     @Override
     protected void onPostExecute(Void result) {
+        dialog.hide();
         updater.onScanListComplete(ssids);
     }
 

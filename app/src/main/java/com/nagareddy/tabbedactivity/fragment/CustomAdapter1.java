@@ -86,7 +86,11 @@ public class CustomAdapter1 extends BaseAdapter   {
          return convertView;
      }
 
+    public void onPreexecute(){
 
+
+
+    }
 
     static class ViewHolder {
         TextView txtname, txtphone;
