@@ -70,9 +70,9 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (this.isVisible()) {
-            Tabs parentActivity = (Tabs)getActivity();
-            parentActivity.setMenuLayout(0);
-            parentActivity.invalidateOptionsMenu();
+           // Tabs parentActivity = (Tabs)getActivity();
+            //parentActivity.setMenuLayout(0);
+            //parentActivity.invalidateOptionsMenu();
             savedModes.clear();
             for (String ssid:scanSSIDs) {
                 //scanSSIDs.add(ssid);
@@ -104,9 +104,9 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     public void updateList(){
         //getActivity().requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         //getActivity().setProgressBarIndeterminateVisibility(true);
-        Tabs parentActivity = (Tabs)getActivity();
-        parentActivity.setMenuLayout(2);
-        parentActivity.invalidateOptionsMenu();
+        //Tabs parentActivity = (Tabs)getActivity();
+        //parentActivity.setMenuLayout(2);
+        //parentActivity.invalidateOptionsMenu();
         WifiAsyncTask asyncTask = new WifiAsyncTask();
         asyncTask.registerUI(getActivity(), this);
         asyncTask.execute();
@@ -120,14 +120,21 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
         scanSSIDs.clear();
         savedModes.clear();
         for (String ssid:ssids) {
-            scanSSIDs.add(ssid);
-            savedModes.add(getImageId(dao.getPreferenceof(ssid)));
+            if(!ssid.trim().equals("")) {
+                scanSSIDs.add(ssid);
+                savedModes.add(getImageId(dao.getPreferenceof(ssid)));
+            }
         }
         adapter.notifyDataSetChanged();
     }
 
 
+    @Override
+    public void onResume(){
 
+        updateList();
+        super.onResume();
+    }
 
 }
 

@@ -52,22 +52,28 @@ public class WifiBroadcastReceiver extends BroadcastReceiver {
     }
 
     private void applyPreference(String currentSSID) {
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        final int maxVol = audioManager.getStreamMaxVolume(AudioManager.STREAM_RING);
         currentSSID = currentSSID.replace("\"", "");
+        String modeDescription = "";
         AudioManager audio_mngr = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         int preferredMode = mydb.getPreferenceof(currentSSID);
-        Toast.makeText(context, "Preferred Mode:" + preferredMode, Toast.LENGTH_SHORT).show();
         if (preferredMode == 1) {
             audio_mngr.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+            modeDescription = "Vibrate";
         } else {
             if (preferredMode == 2) {
                 audio_mngr.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                modeDescription = "Silent";
             } else {
                 if (preferredMode == 3) {
                     audio_mngr.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                 } else {
                     audio_mngr.setStreamVolume(AudioManager.STREAM_RING, (preferredMode - 3), AudioManager.FLAG_ALLOW_RINGER_MODES | AudioManager.FLAG_PLAY_SOUND);
+                    modeDescription = (preferredMode - 3)*100/maxVol+"% volume";
                 }
             }
         }
+        Toast.makeText(context, "Preferred Mode:" + modeDescription, Toast.LENGTH_SHORT).show();
     }
 }

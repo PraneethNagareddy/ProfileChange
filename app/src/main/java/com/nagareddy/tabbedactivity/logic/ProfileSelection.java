@@ -3,6 +3,10 @@ package com.nagareddy.tabbedactivity.logic;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -94,11 +98,24 @@ public class ProfileSelection extends AppCompatActivity implements SeekBar.OnSee
                         break;
                     case R.id.ring :
                         mode = Math.round(seekBar.getProgress() * maxVol/100)+3;
-                        modeDescription  = "Ring at "+((mode/maxVol)*100)+"% volume";
+                        modeDescription  = "Ring at "+seekBar.getProgress()+"% volume";
                         break;
                 }
-                if(dao.insertASilentProfile(new StateDescriber(mode,ssid)))
-                    Toast.makeText(context, "Preference for "+ssid+":"+modeDescription, Toast.LENGTH_LONG).show();
+                if(dao.insertASilentProfile(new StateDescriber(mode,ssid))) {
+                    Toast.makeText(context, "Preference for " + ssid + ":" + modeDescription, Toast.LENGTH_LONG).show();
+                    //ConnectivityManager connMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    //NetworkInfo netInfo = connMan.getActiveNetworkInfo();
+                    WifiManager wifiMan = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+                    WifiInfo wifiInfo = wifiMan.getConnectionInfo();
+                   // Toast.makeText(context, "wifi:"+wifiInfo.getSSID(), Toast.LENGTH_SHORT).show();
+                    if(ssid.equals("Default")
+                            && wifiInfo.getSSID().equals("")){
+                        applyMode(mode);
+                    }
+                    if(wifiInfo.getSSID().equals("\""+ssid+"\"")) {
+                        applyMode(mode);
+                    }
+                }
             }
         });
 
@@ -154,6 +171,26 @@ public class ProfileSelection extends AppCompatActivity implements SeekBar.OnSee
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private void applyMode(int preferredMode){
+        AudioManager audio_mngr = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (preferredMode == 1) {
+            audio_mngr.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+        } else {
+            if (preferredMode == 2) {
+                audio_mngr.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            } else {
+                if (preferredMode == 3) {
+                    audio_mngr.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                } else {
+                    audio_mngr.setStreamVolume(AudioManager.STREAM_RING, (preferredMode - 3), AudioManager.FLAG_ALLOW_RINGER_MODES | AudioManager.FLAG_PLAY_SOUND);
+                }
+            }
+        }
+        //Toast.makeText(context, "Preferred Mode:" + preferredMode, Toast.LENGTH_SHORT).show();
     }
 
 

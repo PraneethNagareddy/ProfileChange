@@ -36,7 +36,7 @@ class WifiAsyncTask extends AsyncTask<Void,Void,Void> {
         wifi = (WifiManager) parentContext.getSystemService(Context.WIFI_SERVICE);
         wifi.startScan();
         try{
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         }catch(InterruptedException ie){ }
         ssids = getSSIDS(wifi.getScanResults());
         return null;
@@ -45,7 +45,7 @@ class WifiAsyncTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
 
-dialog = ProgressDialog.show(parentContext, "Loading...", "Please wait...", true);
+dialog = ProgressDialog.show(parentContext, "Scanning...", "Please wait...", true);
 
     }
 

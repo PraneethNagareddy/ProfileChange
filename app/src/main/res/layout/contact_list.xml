@@ -11,23 +11,20 @@
         android:id="@+id/lv_contact_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
         android:textSize="17dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="15dp"
-        android:textStyle="bold"
         android:textColor="@color/radioText" />
 
 
 
 
-    <!--  <TextView
+    <TextView
           android:id="@+id/lv_contact_item_phone"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="@string/hello_blank_fragment"
           android:layout_below="@+id/lv_contact_item_name"
-          android:layout_marginLeft="100dp"/>  -->
+          android:layout_marginLeft="60dp"/>
 
 
 
@@ -36,8 +33,6 @@
         android:id="@+id/image"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/mute"
-
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         />
@@ -48,6 +43,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="340dp"
+        android:layout_marginTop="5dp"
         android:clickable="true"/>
 
 </RelativeLayout>

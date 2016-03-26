@@ -73,9 +73,9 @@ public class TwoFragment extends Fragment{
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (this.isVisible()) {
-            Tabs parentActivity = (Tabs)getActivity();
-            parentActivity.setMenuLayout(1);
-            parentActivity.invalidateOptionsMenu();
+            //Tabs parentActivity = (Tabs)getActivity();
+            //parentActivity.setMenuLayout(1);
+            //parentActivity.invalidateOptionsMenu();
         }
     }
 
@@ -134,6 +134,7 @@ public class TwoFragment extends Fragment{
                 //    holder.txtphone = (TextView) convertView.findViewById(R.id.lv_contact_item_phone);
                 holder.imageView = (ImageView) convertView.findViewById(R.id.image);
                 holder.deleteView = (ImageView) convertView.findViewById(R.id.delete);
+                holder.txtphone = (TextView) convertView.findViewById(R.id.lv_contact_item_phone);
                 convertView.setTag(holder);
             }
 
@@ -142,8 +143,10 @@ public class TwoFragment extends Fragment{
             }
             holder.txtname.setText(texts.get(position));
             holder.imageView.setImageResource(images.get(position));
-            if (holder.txtname.getText().equals("Default"))
+            if (holder.txtname.getText().equals("Default")) {
                 holder.deleteView.setImageResource(R.drawable.dummy);
+                holder.txtphone.setText("When not connected to any wifi");
+            }
             else {
                 holder.deleteView.setImageResource(R.drawable.delete);
 

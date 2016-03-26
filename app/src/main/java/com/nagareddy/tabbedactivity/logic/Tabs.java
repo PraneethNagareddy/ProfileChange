@@ -162,7 +162,7 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
         }
     }
 
-
+/*
     public boolean onPrepareOptionsMenu (Menu menu) {
 
         if (menuLayout == 0) {
@@ -197,7 +197,7 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
 
         return super.onPrepareOptionsMenu(myMenu);
     }
-
+*/
     public void stopAnimation()
     {
         // Get our refresh item from the menu
