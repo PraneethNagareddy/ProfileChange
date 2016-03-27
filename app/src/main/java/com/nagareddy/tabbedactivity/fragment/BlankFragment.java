@@ -1,21 +1,27 @@
 package com.nagareddy.tabbedactivity.fragment;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.nagareddy.tabbedactivity.R;
 import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
-import com.nagareddy.tabbedactivity.logic.ProfileSelection;
+import com.nagareddy.tabbedactivity.logic.ProfileSelectionDialogue;
 import com.nagareddy.tabbedactivity.logic.Tabs;
 
 import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +31,7 @@ import java.util.ArrayList;
  * Use the {@link BlankFragment# factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment extends Fragment implements UIDataUpdater {
+        public class BlankFragment extends Fragment implements UIDataUpdater,ProfileSelectionDialogue.ProfileSelectionDialogListener {
 
     ScanListAdapter adapter;
     final ArrayList<String> scanSSIDs =  new ArrayList<String>();
@@ -57,10 +63,11 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 //Toast.makeText(getActivity(), "Clicked"+arg0.getItem(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), ProfileSelection.class); // alwys use getActivity() as first parameter in fragment. Generally. "this" is used while calling an activity from an other activity. For fragments use getActivity
-                intent.putExtra("ssid", scanSSIDs.get(+position));
-                intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), ProfileSelection.class); // alwys use getActivity() as first parameter in fragment. Generally. "this" is used while calling an activity from an other activity. For fragments use getActivity
+                //intent.putExtra("ssid", scanSSIDs.get(+position));
+                //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //startActivity(intent);
+                displayDialogue(scanSSIDs.get(+position));
             }
         });
         return rootView;
@@ -80,6 +87,16 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
             }
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        setUserVisibleHint(true);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 
 
@@ -102,11 +119,6 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
     }
 
     public void updateList(){
-        //getActivity().requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        //getActivity().setProgressBarIndeterminateVisibility(true);
-        //Tabs parentActivity = (Tabs)getActivity();
-        //parentActivity.setMenuLayout(2);
-        //parentActivity.invalidateOptionsMenu();
         WifiAsyncTask asyncTask = new WifiAsyncTask();
         asyncTask.registerUI(getActivity(), this);
         asyncTask.execute();
@@ -116,7 +128,6 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
      public void onScanListComplete(ArrayList<String> ssids) {
         Tabs parentActivity = (Tabs)getActivity();
         parentActivity.stopAnimation();
-        //getActivity().setProgressBarIndeterminateVisibility(false);
         scanSSIDs.clear();
         savedModes.clear();
         for (String ssid:ssids) {
@@ -134,6 +145,15 @@ public class BlankFragment extends Fragment implements UIDataUpdater {
 
         updateList();
         super.onResume();
+    }
+
+
+
+    public void displayDialogue(String ssid){
+
+        ProfileSelectionDialogue dialog = new ProfileSelectionDialogue();
+        dialog.setSsid(ssid,this);
+        dialog.show(getActivity().getSupportFragmentManager(), "Preference");
     }
 
 }

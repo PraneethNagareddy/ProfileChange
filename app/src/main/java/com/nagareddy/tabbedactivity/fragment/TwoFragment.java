@@ -5,6 +5,7 @@ package com.nagareddy.tabbedactivity.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +21,13 @@ import com.nagareddy.tabbedactivity.R;
 import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
 import com.nagareddy.tabbedactivity.helperclasses.StateDescriber;
 import com.nagareddy.tabbedactivity.logic.ProfileSelection;
+import com.nagareddy.tabbedactivity.logic.ProfileSelectionDialogue;
 import com.nagareddy.tabbedactivity.logic.Tabs;
 
 import java.util.ArrayList;
 
 
-public class TwoFragment extends Fragment{
+public class TwoFragment extends Fragment implements ProfileSelectionDialogue.ProfileSelectionDialogListener{
     PreferencesDAO dao;
     final ArrayList<String> savedSSIDs = new ArrayList<String>();
     ArrayList<Integer> savedModes = new ArrayList<Integer>();
@@ -46,11 +48,7 @@ public class TwoFragment extends Fragment{
         dao = new PreferencesDAO(getActivity().getApplicationContext());
 
 
-        ArrayList<StateDescriber> preferences = dao.getSilentProfiles();
-        for (StateDescriber preference : preferences) {
-            savedSSIDs.add(preference.getSsid());
-            savedModes.add(getImageId(preference.getMode()));
-        }
+        scanDB();
 
         View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
 
@@ -61,21 +59,31 @@ public class TwoFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 //Toast.makeText(getActivity(), "Clicked"+arg0.getItem(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), ProfileSelection.class); // alwys use getActivity() as first parameter in fragment. Generally. "this" is used while calling an activity from an other activity. For fragments use getActivity
-                intent.putExtra("ssid", savedSSIDs.get(+position));
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), ProfileSelection.class); // alwys use getActivity() as first parameter in fragment. Generally. "this" is used while calling an activity from an other activity. For fragments use getActivity
+                //intent.putExtra("ssid", savedSSIDs.get(+position));
+                //startActivity(intent);
+                displayDialogue(savedSSIDs.get(+position));
             }
         });
         return rootView;//inflater.inflate(R.layout.fragment_one, container, false);
+    }
+
+    public void scanDB(){
+        ArrayList<StateDescriber> preferences = dao.getSilentProfiles();
+        savedSSIDs.clear();
+        savedModes.clear();
+        for (StateDescriber preference : preferences) {
+            savedSSIDs.add(preference.getSsid());
+            savedModes.add(getImageId(preference.getMode()));
+        }
     }
 
      @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (this.isVisible()) {
-            //Tabs parentActivity = (Tabs)getActivity();
-            //parentActivity.setMenuLayout(1);
-            //parentActivity.invalidateOptionsMenu();
+            scanDB();
+            adapter.notifyDataSetChanged();
         }
     }
 
@@ -85,6 +93,16 @@ public class TwoFragment extends Fragment{
         else if (mode == 3) return R.drawable.ringer;
         else if(mode == -1) return R.drawable.dummy;
         else return R.drawable.ringer;
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        setUserVisibleHint(true);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 
 
@@ -183,5 +201,12 @@ public class TwoFragment extends Fragment{
         adapter.notifyDataSetChanged();
     }
 
+
+    public void displayDialogue(String ssid){
+
+        ProfileSelectionDialogue dialog = new ProfileSelectionDialogue();
+        dialog.setSsid(ssid,this);
+        dialog.show(getActivity().getSupportFragmentManager(), "Preference");
+    }
 
 }
