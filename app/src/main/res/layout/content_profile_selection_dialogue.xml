@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+<net.soulwolf.widget.materialradio.MaterialRadioGroup xmlns:soulwolf="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/imageradiogroup">
+
+    <net.soulwolf.widget.materialradio.MaterialRadioButton
+        android:id="@+id/imageradiomute"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        soulwolf:mcTextSize="6sp"
+        soulwolf:mcText="Mute"
+        soulwolf:mcPadding="5dp"
+        soulwolf:mcChecked="true"
+        soulwolf:mcAnimator="true"
+        soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+        soulwolf:mcButton="@drawable/mute_selector"/>
+
+    <net.soulwolf.widget.materialradio.MaterialRadioButton
+        android:id="@+id/imageradiovibrate"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_height="match_parent"
+        soulwolf:mcAnimator="true"
+        soulwolf:mcTextSize="6sp"
+        soulwolf:mcPadding="5dp"
+        soulwolf:mcText="Vibrate"
+        soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+        soulwolf:mcButton="@drawable/vibrate_selector"/>
+
+
+    <net.soulwolf.widget.materialradio.MaterialRadioButton
+        android:id="@+id/imageradioringer"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_height="match_parent"
+        soulwolf:mcAnimator="true"
+        soulwolf:mcTextSize="6sp"
+        soulwolf:mcPadding="5dp"
+        soulwolf:mcText="Ring"
+        soulwolf:mcTextColor="@drawable/radio_button_text_selector"
+        soulwolf:mcButton="@drawable/ringer_selector"/>
+
+
+</net.soulwolf.widget.materialradio.MaterialRadioGroup>
+
+
+    <net.soulwolf.widget.materialradio.MaterialRadioGroup xmlns:soulwolf="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/imageradiogroup1">
+
+    <TextView
+        android:id="@+id/imageradiovolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volume:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/imageradiogroup"
+        android:visibility="invisible"
+        />
+
+    <SeekBar
+        android:id="@+id/imgeradioseekbar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:visibility="invisible"
+        android:layout_below="@+id/imageradiogroup"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/imageradiovolume"/>
+
+
+    </net.soulwolf.widget.materialradio.MaterialRadioGroup>
+
+</RelativeLayout>
