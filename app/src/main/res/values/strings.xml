@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">SoundProfile</string>
+    <string name="app_name">Profiler</string>
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_profile_selection">ProfileSelection</string>
+    <string name="hello_blank_fragment"> </string>
+    <string name="title_activity_profile_selection">Profiler</string>
+    <string name="title_activity_help_web_view">Help</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

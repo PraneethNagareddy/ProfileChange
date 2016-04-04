@@ -1,6 +1,9 @@
 package com.nagareddy.tabbedactivity.logic;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -18,8 +21,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.nagareddy.tabbedactivity.R;
 import com.nagareddy.tabbedactivity.fragment.BlankFragment;
@@ -27,6 +32,8 @@ import com.nagareddy.tabbedactivity.fragment.ItemFragment;
 import com.nagareddy.tabbedactivity.fragment.TwoFragment;
 import com.nagareddy.tabbedactivity.fragment.dummy.DummyContent;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +61,7 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
+        setTitle("Profiler");
         lv = (ListView) findViewById(R.id.lv_contact) ;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -111,9 +119,10 @@ public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragme
 
             return true;
         }
-        if (itemId_ == R.id.scan) {
-            BlankFragment fragment = (BlankFragment)getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewpager + ":" + viewPager.getCurrentItem());
-            fragment.updateList();
+        if (itemId_ == R.id.questions) {
+            Intent webViewIntent = new Intent(this, HelpWebView.class);
+            webViewIntent.setFlags( webViewIntent.getFlags() | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(webViewIntent);
         }
         return false;
     }

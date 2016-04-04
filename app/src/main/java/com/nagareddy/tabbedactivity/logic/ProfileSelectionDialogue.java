@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nagareddy.tabbedactivity.R;
@@ -51,6 +52,7 @@ public class ProfileSelectionDialogue extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // Get the layout inflater
         builder.setTitle(ssid);
+        //builder.set
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.content_profile_selection_dialogue, null);
         final MaterialRadioGroup radioGroup = (MaterialRadioGroup) dialogView.findViewById(R.id.imageradiogroup);
@@ -61,8 +63,7 @@ public class ProfileSelectionDialogue extends DialogFragment {
                 if (i == R.id.imageradioringer) {
                     dialogView.findViewById(R.id.imageradiovolume).setVisibility(View.VISIBLE);
                     dialogView.findViewById(R.id.imgeradioseekbar).setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     dialogView.findViewById(R.id.imageradiovolume).setVisibility(View.INVISIBLE);
                     dialogView.findViewById(R.id.imgeradioseekbar).setVisibility(View.INVISIBLE);
                 }
@@ -125,7 +126,9 @@ public class ProfileSelectionDialogue extends DialogFragment {
                         ProfileSelectionDialogue.this.getDialog().cancel();
                     }
                 });
-
+       // TextView titleView = (TextView) getActivity().findViewById(R.id.customTitle);
+        //titleView.setText(ssid);
+        //builder.setCustomTitle(titleView);
         return builder.create();
     }
 
