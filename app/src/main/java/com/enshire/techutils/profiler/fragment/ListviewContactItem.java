@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 /**
  * Created by keerthichandra on 3/3/2016.

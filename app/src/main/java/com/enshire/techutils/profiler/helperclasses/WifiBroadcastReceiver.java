@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.helperclasses;
+package com.enshire.techutils.profiler.helperclasses;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.widget.Toast;
 
-import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
+import com.enshire.techutils.profiler.dao.PreferencesDAO;
 
 public class WifiBroadcastReceiver extends BroadcastReceiver {
     PreferencesDAO mydb;

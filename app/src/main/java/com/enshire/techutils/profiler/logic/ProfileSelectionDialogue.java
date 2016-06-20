@@ -1,6 +1,5 @@
-package com.nagareddy.tabbedactivity.logic;
+package com.enshire.techutils.profiler.logic;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,12 +12,11 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
-import com.nagareddy.tabbedactivity.helperclasses.StateDescriber;
+import com.enshire.techutils.profiler.dao.PreferencesDAO;
+import com.enshire.techutils.profiler.helperclasses.StateDescriber;
+import com.enshire.techutils.profiler.R;
 
 import net.soulwolf.widget.materialradio.MaterialRadioGroup;
 import net.soulwolf.widget.materialradio.listener.OnCheckedChangeListener;
@@ -36,8 +34,8 @@ public class ProfileSelectionDialogue extends DialogFragment {
     }
 
     public interface ProfileSelectionDialogListener {
-        public void onDialogPositiveClick(android.support.v4.app.DialogFragment dialog);
-        public void onDialogNegativeClick(android.support.v4.app.DialogFragment dialog);
+        public void onDialogPositiveClick(DialogFragment dialog);
+        public void onDialogNegativeClick(DialogFragment dialog);
     }
 
 

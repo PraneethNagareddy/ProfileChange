@@ -1,9 +1,6 @@
-package com.nagareddy.tabbedactivity.logic;
+package com.enshire.techutils.profiler.logic;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,30 +10,21 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.fragment.BlankFragment;
-import com.nagareddy.tabbedactivity.fragment.ItemFragment;
-import com.nagareddy.tabbedactivity.fragment.TwoFragment;
-import com.nagareddy.tabbedactivity.fragment.dummy.DummyContent;
+import com.enshire.techutils.profiler.fragment.BlankFragment;
+import com.enshire.techutils.profiler.fragment.ItemFragment;
+import com.enshire.techutils.profiler.fragment.TwoFragment;
+import com.enshire.techutils.profiler.fragment.dummy.DummyContent;
+import com.enshire.techutils.profiler.R;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class Tabs extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener{

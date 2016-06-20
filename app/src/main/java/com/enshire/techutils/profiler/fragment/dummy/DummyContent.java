@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment.dummy;
+package com.enshire.techutils.profiler.fragment.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

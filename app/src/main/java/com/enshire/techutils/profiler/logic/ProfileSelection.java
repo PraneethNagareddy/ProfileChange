@@ -1,10 +1,8 @@
-package com.nagareddy.tabbedactivity.logic;
+package com.enshire.techutils.profiler.logic;
 
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -22,9 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
-import com.nagareddy.tabbedactivity.helperclasses.StateDescriber;
+import com.enshire.techutils.profiler.R;
+import com.enshire.techutils.profiler.dao.PreferencesDAO;
+import com.enshire.techutils.profiler.helperclasses.StateDescriber;
 
 public class ProfileSelection extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 

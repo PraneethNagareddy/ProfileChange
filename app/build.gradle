@@ -5,16 +5,26 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.nagareddy.tabbedactivity"
+        applicationId "com.enshire.techutils.profiler"
         minSdkVersion 19
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("android.jks")
+            storePassword "1990January"
+            keyAlias "MyAndroidKey"
+            keyPassword "1990January"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

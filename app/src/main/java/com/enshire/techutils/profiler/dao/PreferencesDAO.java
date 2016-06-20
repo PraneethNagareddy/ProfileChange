@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.dao;
+package com.enshire.techutils.profiler.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.AudioManager;
 
-import com.nagareddy.tabbedactivity.helperclasses.StateDescriber;
+import com.enshire.techutils.profiler.helperclasses.StateDescriber;
 
 import java.util.ArrayList;
 

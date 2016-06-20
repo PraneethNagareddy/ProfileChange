@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.fragment.ItemFragment.OnListFragmentInteractionListener;
-import com.nagareddy.tabbedactivity.fragment.dummy.DummyContent.DummyItem;
+import com.enshire.techutils.profiler.R;
+import com.enshire.techutils.profiler.fragment.ItemFragment.OnListFragmentInteractionListener;
+import com.enshire.techutils.profiler.fragment.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 

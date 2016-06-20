@@ -11,7 +11,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.nagareddy.tabbedactivity.fragment.ItemFragment"
+    tools:context="com.enshire.techutils.profiler.fragment.ItemFragment"
     tools:listitem="@layout/fragment_item"/>
 
 

@@ -1,24 +1,19 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
-import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.dao.PreferencesDAO;
-import com.nagareddy.tabbedactivity.logic.ProfileSelectionDialogue;
-import com.nagareddy.tabbedactivity.logic.Tabs;
+import com.enshire.techutils.profiler.R;
+import com.enshire.techutils.profiler.dao.PreferencesDAO;
+import com.enshire.techutils.profiler.logic.ProfileSelectionDialogue;
+import com.enshire.techutils.profiler.logic.Tabs;
 
 import java.util.ArrayList;
 

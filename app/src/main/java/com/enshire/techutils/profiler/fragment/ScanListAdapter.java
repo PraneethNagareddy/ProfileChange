@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nagareddy.tabbedactivity.R;
+import com.enshire.techutils.profiler.R;
 
 import java.util.ArrayList;
 

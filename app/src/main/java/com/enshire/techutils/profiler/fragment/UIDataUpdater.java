@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 import java.util.ArrayList;
 

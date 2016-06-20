@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.helperclasses;
+package com.enshire.techutils.profiler.helperclasses;
 
 /**
  * Created by praneeth on 03/11/2015.

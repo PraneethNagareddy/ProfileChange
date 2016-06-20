@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.logic;
+package com.enshire.techutils.profiler.logic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
-import com.nagareddy.tabbedactivity.R;
+import com.enshire.techutils.profiler.R;
 
 public class HelpWebView extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nagareddy.tabbedactivity.R;
-import com.nagareddy.tabbedactivity.fragment.dummy.DummyContent;
-import com.nagareddy.tabbedactivity.fragment.dummy.DummyContent.DummyItem;
+import com.enshire.techutils.profiler.R;
+import com.enshire.techutils.profiler.fragment.dummy.DummyContent;
+import com.enshire.techutils.profiler.fragment.dummy.DummyContent.DummyItem;
 
 /**
  * A fragment representing a list of Items.

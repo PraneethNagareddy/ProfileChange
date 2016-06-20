@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity.fragment;
+package com.enshire.techutils.profiler.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 
-import com.nagareddy.tabbedactivity.helperclasses.WifiNetwork;
+import com.enshire.techutils.profiler.helperclasses.WifiNetwork;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.nagareddy.tabbedactivity;
+package com.enshire.techutils.profiler;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

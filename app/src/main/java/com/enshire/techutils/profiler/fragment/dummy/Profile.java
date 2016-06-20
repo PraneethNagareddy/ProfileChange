@@ -1,10 +1,10 @@
-package com.nagareddy.tabbedactivity.fragment.dummy;
+package com.enshire.techutils.profiler.fragment.dummy;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.nagareddy.tabbedactivity.R;
+import com.enshire.techutils.profiler.R;
 
 import java.util.List;
 
