@@ -186,7 +186,6 @@ public class TwoFragment extends Fragment implements ProfileSelectionDialogue.Pr
         }
     }
 
-
     private void dataChanged() {
        savedModes.clear();
         savedSSIDs.clear();
